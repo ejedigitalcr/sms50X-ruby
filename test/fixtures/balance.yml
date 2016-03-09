@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.sms506.com/balance/***REMOVED***
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.1
+      Date:
+      - Wed, 09 Mar 2016 07:15:05 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '22'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding,User-Agent
+    body:
+      encoding: ASCII-8BIT
+      string: '20'
+    http_version:
+  recorded_at: Wed, 09 Mar 2016 07:15:03 GMT
+recorded_with: VCR 3.0.1

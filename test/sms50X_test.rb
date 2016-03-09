@@ -5,7 +5,11 @@ class Sms50XTest < Minitest::Test
     refute_nil ::Sms50X::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_it_returns_the_account_balance
+    VCR.use_cassette('balance') do
+      balance = Sms50X.balance
+      assert_equal 20, balance
+    end
   end
+
 end

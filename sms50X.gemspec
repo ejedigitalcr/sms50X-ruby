@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sms50X/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sms50X"
+  spec.name          = "sms50X-ruby"
   spec.version       = Sms50X::VERSION
   spec.authors       = ["Pablo Cordero"]
-  spec.email         = ["pablocordero@gmail.com"]
+  spec.email         = ["pablo.cordero@ejedigitalcr.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Ruby wrapper for the SMS50X.com [http://www.sms506.com] API.}
+  spec.description   = %q{Send SMSs.}
+  spec.homepage      = "https://github.com/ejedigitalcr/sms50X-ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -30,4 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "faraday"
 end
