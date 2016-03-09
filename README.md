@@ -1,12 +1,14 @@
 # Sms50X
 
+[![Build Status](https://travis-ci.org/ejedigitalcr/sms50X-ruby.svg?branch=master)](https://travis-ci.org/ejedigitalcr/sms50X-ruby)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sms50X`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your Gemfile:
 
 ```ruby
 gem 'sms50X'
@@ -22,7 +24,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Send a single SMS message
+
+```ruby
+require 'sms50X'
+client = SMS50X::Client.new('API_KEY')
+message = client.messages.build( to: '55515523', content: 'This is a test message.')
+response = message.deliver
+
+if response.success
+  puts response.message_id
+else
+  puts response.error_code
+  puts response.error_description
+end
+```
 
 ### Check balance
 
