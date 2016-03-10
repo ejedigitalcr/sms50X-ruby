@@ -1,17 +1,13 @@
 module Sms50X
   module Configuration
-    VALID_CONNECTION_KEYS = [:endpoint, :method].freeze
-    VALID_OPTION_KEYS = [:api_key, :format].freeze
-    VALID_CONFIG_KEYS     = VALID_CONNECTION_KEYS + VALID_OPTION_KEYS
 
-    DEFAULT_ENDPOINT = ''
-    DEFAULT_METHOD = :get
+    DEFAULTS = {
+      host: 'api.sms506.com'
+    }
 
-    DEFAULT_API_KEY = nil
-    DEFAULT_FORMAT = :json
-
-    # Build accessor methods for every config options so we can do this, for example:
-    attr_accessor *VALID_CONFIG_KEYS
+    DEFAULTS.each_key do |attribute|
+      attr_accessor attribute
+    end
 
     # Make sure we have the default values set when we get 'extended'
     def self.extended(base)
@@ -24,6 +20,18 @@ module Sms50X
 
       self.api_key    = DEFAULT_API_KEY
       self.format     = DEFAULT_FORMAT
+    end
+
+    def get_endpoint
+      # ISO 3166-1 alpha-3 codes
+      countries = {
+        'GTM' => '502', # Guatemala
+        'SLV' => '503', # El Salvador
+        'HND' => '504', # Honduras
+        'CRI' => '506', # Costa Rica
+        'PAN' => '507'  # Panama
+      }
+      http://api.sms506.com
     end
 
     def configure

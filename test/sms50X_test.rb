@@ -7,7 +7,8 @@ class Sms50XTest < Minitest::Test
 
   def test_it_returns_the_account_balance
     VCR.use_cassette('balance') do
-      balance = Sms50X.balance
+      client = Sms50X::Client.new
+      balance = client.balance
       assert_equal 20, balance
     end
   end
