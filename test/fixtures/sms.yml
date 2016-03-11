@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.sms506.com/sms/API_KEY/?m=Thisisatest&t=55555555
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.1
+      Date:
+      - Fri, 11 Mar 2016 19:45:02 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '22'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding,User-Agent
+    body:
+      encoding: ASCII-8BIT
+      string: '99'
+    http_version:
+  recorded_at: Fri, 11 Mar 2016 19:44:57 GMT
+recorded_with: VCR 3.0.1

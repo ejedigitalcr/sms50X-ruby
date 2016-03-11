@@ -13,4 +13,22 @@ class Sms50XTest < Minitest::Test
     end
   end
 
+  def test_it_sends_a_message
+    skip("need to figure out how to order parameters being passed on the query string")
+    
+    VCR.use_cassette('sms') do
+      client = Sms50X::Client.new('API_KEY', 'CRI')
+      response = client.send_message('55555555', "This is a test")
+      assert_equal 0, response
+    end
+  end
+
+  def test_it_gets_stats_for_a_month
+    VCR.use_cassette('stats') do
+      client = Sms50X::Client.new('API_KEY', 'CRI')
+      response = client.get_stats(Date.today.month)
+      assert_equal 10, response
+    end
+  end
+
 end

@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ejedigitalcr/sms50X-ruby.svg?branch=master)](https://travis-ci.org/ejedigitalcr/sms50X-ruby) [![Coverage Status](https://coveralls.io/repos/github/ejedigitalcr/sms50X-ruby/badge.svg?branch=master)](https://coveralls.io/github/ejedigitalcr/sms50X-ruby?branch=master) [![Gem Version](https://badge.fury.io/rb/sms50X-ruby.svg)](https://badge.fury.io/rb/sms50X-ruby)
 
-A Ruby library for interacting with the SMS50X Web API (<http://www.sms506.com>).
+A Ruby library for interacting with the SMS50X Web API (<http://www.sms506.com>), a service to send text messages to mobile phones within most of Central America.
 
 ## Installation
 

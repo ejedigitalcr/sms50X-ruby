@@ -2,7 +2,7 @@ module Sms50X
   extend Configuration
 
   class Client
-    
+
     attr_accessor :api_key, :country_code, :host
 
     def initialize(*args)
@@ -19,8 +19,18 @@ module Sms50X
 
     end
 
+    def send_message(phone, message)
+      
+    end
+
     def balance
       response = Faraday.get("#{host}/balance/#{api_key}")
+      response.body.to_i
+    end
+
+    def get_stats(month = Date.today.month)
+      month -= 1
+      response = Faraday.get("#{host}/stat/#{api_key}/#{month}")
       response.body.to_i
     end
 
