@@ -20,7 +20,8 @@ module Sms50X
     end
 
     def send_message(phone, message)
-      
+      response = Faraday.get("#{host}/sms/#{api_key}/t=#{phone}&m=#{escape(message)}")
+      response.body.to_i
     end
 
     def balance
@@ -29,7 +30,6 @@ module Sms50X
     end
 
     def get_stats(month = Date.today.month)
-      month -= 1
       response = Faraday.get("#{host}/stat/#{api_key}/#{month}")
       response.body.to_i
     end
@@ -57,6 +57,10 @@ module Sms50X
         code = countries.fetch(country_code) { countries['CRI'] }
 
         "http://api.sms#{code}.com"
+      end
+
+      def escape(component)
+        CGI.escape(component.to_s)
       end
 
   end

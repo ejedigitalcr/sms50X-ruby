@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.sms506.com/stat/API_KEY/2
+    uri: http://api.sms506.com/stat/API_KEY/3
     body:
       encoding: US-ASCII
       string: ''
