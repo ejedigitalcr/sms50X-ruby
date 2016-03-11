@@ -1,6 +1,6 @@
 require 'sms50X'
 
 Sms50X.configure do |config|
-  config.api_key = ''
-  config.country_code = 'CRI'
+  config.api_key = nil
+  config.country_code = nil
 end

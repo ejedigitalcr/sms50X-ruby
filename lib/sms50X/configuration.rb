@@ -2,7 +2,8 @@ module Sms50X
   module Configuration
 
     DEFAULTS = {
-      host: 'api.sms506.com'
+      api_key: nil,
+      country_code: 'CRI'
     }
 
     DEFAULTS.each_key do |attribute|
@@ -15,31 +16,12 @@ module Sms50X
     end
 
     def reset
-      self.endpoint   = DEFAULT_ENDPOINT
-      self.method     = DEFAULT_METHOD
-
-      self.api_key    = DEFAULT_API_KEY
-      self.format     = DEFAULT_FORMAT
-    end
-
-    def get_endpoint
-      # ISO 3166-1 alpha-3 codes
-      countries = {
-        'GTM' => '502', # Guatemala
-        'SLV' => '503', # El Salvador
-        'HND' => '504', # Honduras
-        'CRI' => '506', # Costa Rica
-        'PAN' => '507'  # Panama
-      }
-      http://api.sms506.com
+      self.api_key = DEFAULTS[:api_key]
+      self.country_code = DEFAULTS[:country_code]
     end
 
     def configure
       yield self
-    end
-
-    def options
-      Hash[ * VALID_CONFIG_KEYS.map { |key| [key, send(key)] }.flatten ]
     end
 
   end

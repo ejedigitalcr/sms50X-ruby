@@ -7,7 +7,7 @@ describe 'configuration' do
   end
 
   describe '.configure' do
-    Sms50X::Configuration::VALID_CONFIG_KEYS.each do |key|
+    Sms50X::Configuration::DEFAULTS.each do |key, value|
       it "should set the #{key}" do
         Sms50X.configure do |config|
           config.send("#{key}=", key)
@@ -17,10 +17,10 @@ describe 'configuration' do
     end
   end
 
-  Sms50X::Configuration::VALID_CONFIG_KEYS.each do |key|
+  Sms50X::Configuration::DEFAULTS.each do |key, value|
     describe ".#{key}" do
       it 'should return the default value' do
-        Sms50X.send(key).must_equal Sms50X::Configuration.const_get("DEFAULT_#{key.upcase}")
+        Sms50X.send(key).must_equal Sms50X::Configuration::DEFAULTS[key]
       end
     end
   end
