@@ -1,7 +1,8 @@
 module Sms50X
+  extend Configuration
 
   class Client
-
+    
     attr_accessor :api_key, :country_code, :host
 
     def initialize(*args)
