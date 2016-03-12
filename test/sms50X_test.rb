@@ -36,4 +36,12 @@ class Sms50XTest < Minitest::Test
       assert_equal "[{\"fecha\":\"11-03-2016 15:07\",\"telf\":\"55555555\",\"txt\":\"This is a reply\"}]", response
     end
   end
+
+  def test_it_sends_a_message_to_multiple_phone_numbers
+    VCR.use_cassette('bulk') do
+      client = Sms50X::Client.new('API_KEY', 'CRI')
+      response = client.bulk_send("This is a test.", [55555555, 55505555])
+      assert_equal "Enviados 2", response
+    end
+  end
 end

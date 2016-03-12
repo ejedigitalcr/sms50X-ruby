@@ -1,3 +1,6 @@
+require 'rexml/document'
+include REXML
+
 module Sms50X
   extend Configuration
 
@@ -39,6 +42,11 @@ module Sms50X
       response.body
     end
 
+    def bulk_send(message, phone_numbers)
+      response = Faraday.post("#{host}/xml", build_bulk_xml(message, phone_numbers))
+      response.body
+    end
+
     private
 
       def get_api_key(arg)
@@ -62,6 +70,22 @@ module Sms50X
         code = countries.fetch(country_code) { countries['CRI'] }
 
         "http://api.sms#{code}.com"
+      end
+
+      def build_bulk_xml(message, phone_numbers)
+        root = Element.new "SMS"
+        auth = root.add_element "authentification" # [sic]
+        api_key_element = auth.add_element "apikey"
+        api_key_element.text = api_key
+        message_element = root.add_element "message"
+        text_element = message_element.add_element "text"
+        text_element.text = message
+        recipients = root.add_element "recipients"
+        phone_numbers.each do |number|
+          gsm = recipients.add_element "gsm"
+          gsm.text = number
+        end
+        root.to_s
       end
 
       def escape(component)
