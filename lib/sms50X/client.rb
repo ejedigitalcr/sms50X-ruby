@@ -9,8 +9,6 @@ module Sms50X
     attr_accessor :api_key, :country_code, :host
 
     def initialize(*args)
-      options = args.last.is_a?(Hash) ? args.pop : {}
-
       @api_key = get_api_key(args[0])
       @country_code = get_country_code(args[1])
 
@@ -38,7 +36,7 @@ module Sms50X
     end
 
     def get_replies(date = Date.today, output_format = :json)
-      response = Faraday.get("#{host}/smsin/#{api_key}/#{output_format.to_s}/#{date.strftime("%d-%m-%Y")}")
+      response = Faraday.get("#{host}/smsin/#{api_key}/#{output_format}/#{date.strftime("%d-%m-%Y")}")
       response.body
     end
 
