@@ -29,4 +29,11 @@ class Sms50XTest < Minitest::Test
     end
   end
 
+  def test_it_gets_replies_from_a_specific_date
+    VCR.use_cassette('replies') do
+      client = Sms50X::Client.new('API_KEY', 'CRI')
+      response = client.get_replies(Date.new(2016,3,11))
+      assert_equal "[{\"fecha\":\"11-03-2016 15:07\",\"telf\":\"55555555\",\"txt\":\"This is a reply\"}]", response
+    end
+  end
 end

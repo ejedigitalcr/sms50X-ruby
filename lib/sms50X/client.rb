@@ -34,6 +34,11 @@ module Sms50X
       response.body.to_i
     end
 
+    def get_replies(date = Date.today, output_format = :json)
+      response = Faraday.get("#{host}/smsin/#{api_key}/#{output_format.to_s}/#{date.strftime("%d-%m-%Y")}")
+      response.body
+    end
+
     private
 
       def get_api_key(arg)
